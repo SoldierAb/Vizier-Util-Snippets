@@ -1,93 +1,180 @@
 {
-    "V.ajax.requestConfig": {
-        "prefix": "V.ajax.requestC",
-        "body": [
-          "V.ajax.requestConfig = conf => {",
-          " conf.baseURl = '$1'",
-          " conf.headers['Authorization'] = `Bear ${$2}` ",
-          " return conf",
-          "}"
-        ],
-        "description": "请求拦截器"
-    },
-    "V.ajax.responseRes": {
-        "prefix": "V.ajax.responseR",
-        "body": [
-          "V.ajax.responseRes = response => {",
-          " // do something ...",
-          " '$1'",
-          " return response.data",
-          "}"
-        ],
-        "description": "返回拦截器"
-    },
-    "V.ajax.g":{
-        "prefix": "V.ajax.get",
-        "body": [
-          "V.ajax.get('$1',{",
-          " // config",
-          " $2",    
-          "})"
-        ],
-        "description": "get"
-    },
-    "V.ajax.p":{
-        "prefix": "V.ajax.post",
-        "body": [
-          "V.ajax.post('$1',{",
-          " // data ",
-          " $2",    
-          "},{",
-          " // config",
-          " $3",  
-          "})"
-        ],
-        "description": "post"
-    },
-    "V.cookies.write": {
-        "prefix": "V.cookies.w",
-        "body": [
-          "V.cookies.write('$1',`${$2}`)"
-        ],
-        "description": "cookie写入"
-    },
-    "V.cookies.read": {
-        "prefix": "V.cookies.rea",
-        "body": [
-          "V.cookies.read('$1')"
-        ],
-        "description": "cookie读取"
-    },
-    "V.cookies.remove": {
-        "prefix": "V.cookies.rem",
-        "body": [
-          "V.cookies.remove('$1')"
-        ],
-        "description": "cookie删除"
-    },
-    "V.upload": {
-        "prefix": "V.upload",
-        "body": [
-          "V.upload({",
-          " headers: {",
-          "     Token: $1",
-          " },",
-          " action: $2,",
-          " file: $3,",
-          " data: {",
-          "   $4",
-          " },",
-          " onProgress: (e) => {",
-          "     console.log(e)",
-          " },",
-          " onSuccess: (res) => {",
-          "     console.log(res)",
-          " },",
-          " onError: (err) => {",
-          "     console.error(err)",  
-          " }",
-          "})"
-        ],
-        "description": "上传"
-    }
+  "V.ajax.requestConfig": {
+    "prefix": "V.ajax.requestConfig",
+    "body": [
+      "V.ajax.requestConfig = conf => {",
+      " conf.baseURl = '$1'",
+      " conf.headers['Authorization'] = `Bear ${$2}` ",
+      " return conf",
+      "}"
+    ],
+    "description": "请求拦截器"
+  },
+  "V.ajax.requestError": {
+    "prefix": "V.ajax.requestError",
+    "body": [
+      "V.ajax.requestError = err => {",
+      " err => Promise.reject(err) ",
+      "}"
+    ],
+    "description": "请求拦截器"
+  },
+  "V.ajax.responseRes": {
+    "prefix": "V.ajax.responseRes",
+    "body": [
+      "V.ajax.responseRes = response => {",
+      " // do something ...",
+      " '$1'",
+      " return response.data",
+      "}"
+    ],
+    "description": "返回拦截器"
+  },
+  "V.ajax.responseError": {
+    "prefix": "V.ajax.responseError",
+    "body": [
+      "V.ajax.responseError = err => {",
+      " err => Promise.reject(err) ",
+      "}"
+    ],
+    "description": "请求拦截器"
+  },
+  "V.ajax.get": {
+    "prefix": "V.ajax.get",
+    "body": [
+      "V.ajax.get('$1',{",
+      " // config",
+      " $2",
+      "})"
+    ],
+    "description": "get"
+  },
+  "V.ajax.post": {
+    "prefix": "V.ajax.post",
+    "body": [
+      "V.ajax.post('$1',{",
+      " // data ",
+      " $2",
+      "},{",
+      " // config",
+      " $3",
+      "})"
+    ],
+    "description": "post"
+  },
+  "V.ajax.request": {
+    "prefix": "V.ajax.request",
+    "body": [
+      "V.ajax.request({",
+      " url:'$1',",
+      " method:'$2',",
+      " data:'$3',",
+      " // customize config ... 其他属性请参考文档 ",
+      " // params: { }",
+      "})"
+    ],
+    "description": "post"
+  },
+  "V.ajax.delete": {
+    "prefix": "V.ajax.delete",
+    "body": [
+      "V.ajax.delete('$1',{",
+      " // config",
+      " $2",
+      "})"
+    ],
+    "description": "delete"
+  },
+  "V.ajax.head": {
+    "prefix": "V.ajax.head",
+    "body": [
+      "V.ajax.head('$1',{",
+      " // config",
+      " $2",
+      "})"
+    ],
+    "description": "head"
+  },
+  "V.ajax.options": {
+    "prefix": "V.ajax.options",
+    "body": [
+      "V.ajax.options('$1',{",
+      " // config",
+      " $2",
+      "})"
+    ],
+    "description": "options"
+  },
+  "V.ajax.put": {
+    "prefix": "V.ajax.put",
+    "body": [
+      "V.ajax.put('$1',{",
+      " // data ",
+      " $2",
+      "},{",
+      " // config",
+      " $3",
+      "})"
+    ],
+    "description": "put"
+  },
+  "V.ajax.patch": {
+    "prefix": "V.ajax.patch",
+    "body": [
+      "V.ajax.patch('$1',{",
+      " // data ",
+      " $2",
+      "},{",
+      " // config",
+      " $3",
+      "})"
+    ],
+    "description": "patch"
+  },
+  "V.cookies.write": {
+    "prefix": "V.cookies.w",
+    "body": [
+      "V.cookies.write('$1',`${$2}`)"
+    ],
+    "description": "cookie写入"
+  },
+  "V.cookies.read": {
+    "prefix": "V.cookies.rea",
+    "body": [
+      "V.cookies.read('$1')"
+    ],
+    "description": "cookie读取"
+  },
+  "V.cookies.remove": {
+    "prefix": "V.cookies.rem",
+    "body": [
+      "V.cookies.remove('$1')"
+    ],
+    "description": "cookie删除"
+  },
+  "V.upload": {
+    "prefix": "V.upload",
+    "body": [
+      "V.upload({",
+      " headers: {",
+      "     Token: $1",
+      " },",
+      " action: $2,",
+      " file: $3,",
+      " data: {",
+      "   $4",
+      " },",
+      " onProgress: (e) => {",
+      "     console.log(e)",
+      " },",
+      " onSuccess: (res) => {",
+      "     console.log(res)",
+      " },",
+      " onError: (err) => {",
+      "     console.error(err)",
+      " }",
+      "})"
+    ],
+    "description": "上传"
+  }
 }
